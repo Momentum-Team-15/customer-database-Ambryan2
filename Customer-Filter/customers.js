@@ -566,6 +566,8 @@ const customerCont = document.querySelector('#pplCont');
 
 //Function that allows people to be displayed
 function customerGrid(customerArray) {
+  //this is the canvas where the button for all customers is
+  let masterPeopleCont = document.createElement("div");
   // this for loop goes through everything and allows me to use the variable i to select items in the custom array
   for (let i = 0; i<customerArray.length; i++)
   {
@@ -582,6 +584,7 @@ function customerGrid(customerArray) {
     let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
     let birthday = 'DOB: ' + moment(birthD.date).format("MMM Do YY"); 
     let customerSince = 'Customer since: ' + moment(regi.date).format("MMM Do YY")
+    
     
     let personDiv = document.createElement("div");
     let name = document.createElement("h2");
@@ -606,7 +609,6 @@ function customerGrid(customerArray) {
     // cell.innerText = indivCust.cell;
     // id.innerText = indivCust.id;
     // nat.innerText = indivCust.nat;
-
     email.classList.add("test");
 //     //putting everything I want displayed into one div
     personDiv.appendChild(picture);
@@ -618,14 +620,15 @@ function customerGrid(customerArray) {
     // personDiv.appendChild(phone);
     // personDiv.appendChild(cell);
     // personDiv.appendChild(id);
-    
     // personDiv.appendChild(nat);
-
-//     //putting this in the id area in html
-    customerCont.appendChild(personDiv);
+    masterPeopleCont.appendChild(personDiv); //this puts everything on the canvas made before loop
+    //putting this in the id area in html
     personDiv.classList.add("box");
     // add styles to the div using a class
   }
+  //this then adds styling to canvas so that the elements go where I want them to 
+  masterPeopleCont.classList.add("peopleCont");
+  customerCont.appendChild(masterPeopleCont)
 } 
 //this is the end of the function
 
@@ -634,7 +637,7 @@ function customerGrid(customerArray) {
 const showMeButton = document.querySelector("#showMe")
 //meant to hide people
 function hidePeople(container) {
-  let personDivs = container.querySelectorAll(".box");
+  let personDivs = container.querySelectorAll(".peopleCont");
   for (let div of personDivs) {
     container.removeChild(div);
   }}
@@ -649,7 +652,7 @@ showMeButton.addEventListener("click", (event) => {
   }
 })
 
-//another input to show specific people
+//another input to show specific people test
 const bigRussell = document.querySelector('#bigRuss') 
 
 function findPeople (newCust, name) {
