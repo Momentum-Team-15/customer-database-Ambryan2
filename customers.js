@@ -556,12 +556,15 @@ let customers = [
 
 //duplicates the array
 let newCust = customers.slice();
-console.log(newCust);
+// console.log(newCust);
 
 //function for taking out things in array and making them  string
 let displayText = []
 
+//trying to console.log() a specific location in the array that can change
+
 let filteredCust = newCust.filter(function (client) {
+  //need to figure out a way so that it filters out by location so 'sophia emal' doesn't have to be physically inputted and instead a variable
   if (client.email === 'sophia.burns@example.com') {
     console.log('sophia worked') }
   else { console.log('idk yet') }
