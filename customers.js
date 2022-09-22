@@ -605,7 +605,8 @@ function customerGrid(customerArray) {
   }
 } //this is the end of the function
 
-customerGrid(newCust);
+//need to edit items in the array so that they can be read by my display function
+// customerGrid(newCust);
 
 // // meant to hide people
 function hidePeople(container) {
@@ -625,3 +626,8 @@ showMeButton.addEventListener("click", (event) => {
     showMeButton.innerText = "Hide my people!";
   }
 })
+
+//plan of attack right now
+// 1) alter array so that everything can be read
+// 2) make this altering done by another function so that if more people are added they too can be inputted
+// 3) in the function I could use a looping switch that takes out the strings in each object
