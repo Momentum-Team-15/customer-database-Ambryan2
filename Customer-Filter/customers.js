@@ -606,7 +606,7 @@ function customerGrid(customerArray) {
     // cell.innerText = indivCust.cell;
     // id.innerText = indivCust.id;
     // nat.innerText = indivCust.nat;
-    
+
     email.classList.add("test");
 //     //putting everything I want displayed into one div
     personDiv.appendChild(picture);
@@ -627,32 +627,46 @@ function customerGrid(customerArray) {
     // add styles to the div using a class
   }
 } 
-
 //this is the end of the function
 
-// // meant to hide people
 
+//button to show everyone id reference
+const showMeButton = document.querySelector("#showMe")
+//meant to hide people
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".box");
   for (let div of personDivs) {
     container.removeChild(div);
   }}
-
-// //   //button to show everyone id reference
-
-const showMeButton = document.querySelector("#test")
-
 //buttons that shows everyone 
-
 showMeButton.addEventListener("click", (event) => {
-  if (showMeButton.innerText === "Hide my people!") {
+  if (showMeButton.innerText === "Hide my customers!") {
     hidePeople(customerCont);
-    showMeButton.innerText = "Show me my people!";
+    showMeButton.innerText = "Show all my customers!";
   } else {
     customerGrid(newCust);
-    showMeButton.innerText = "Hide my people!";
+    showMeButton.innerText = "Hide my customers!";
   }
 })
+
+//another input to show specific people
+const bigRussell = document.querySelector('#bigRuss') 
+
+function findPeople (newCust, name) {
+  let indivPerson = [];
+  for (let person of newCust) {
+    if (person.name.first === 'Russell') {
+      console.log('test worked');
+    }
+  }
+}
+console.log(newCust, 'Russell')
+
+// const indivPeople = newCust.filter(function(spotLight){ 
+// 	if(spotLight.name.first === 'Russell') {
+//     console.log('Big Russ has been spotted');
+// 	}
+// });
 
 //plan of attack right now
 // 1) alter array so that everything can be read
