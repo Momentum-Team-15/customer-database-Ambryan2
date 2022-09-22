@@ -605,9 +605,9 @@ function customerGrid(customerArray) {
     // phone.innerText = indivCust.phone;
     // cell.innerText = indivCust.cell;
     // id.innerText = indivCust.id;
-    
     // nat.innerText = indivCust.nat;
-
+    
+    email.classList.add("test");
 //     //putting everything I want displayed into one div
     personDiv.appendChild(picture);
     personDiv.appendChild(name);

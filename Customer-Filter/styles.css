@@ -18,6 +18,10 @@
     border: 4px solid white;
     font-size: 10px;
 }  
+.test{
+    font-style: italic;
+    color: grey;
+}
 img{
     height:auto;
     width:80%;
