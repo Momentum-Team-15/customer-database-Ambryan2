@@ -1,3 +1,4 @@
+//this is the array filled will all the people
 const customers = [
   {
     name: {
@@ -552,3 +553,75 @@ const customers = [
     nat: 'US'
   }
 ]
+//this is my copy of the array just in case
+let newCust = customers
+console.log(newCust)
+//this makes a variable connect to my html element with the specific if
+const customerCont = document.querySelector('#pplCont');
+
+//Function that allows people to be displayed
+function customerGrid(customerArray) {
+  for (let indivCust of customerArray) {
+    let personDiv = document.createElement("div");
+    let name = document.createElement("h2");
+    let location = document.createElement("h3");
+    let email = document.createElement("h3");
+    let dob = document.createElement("h3");
+    let registered = document.createElement("h3");
+    let phone = document.createElement("h3");
+    let cell = document.createElement("h3");
+    let id = document.createElement("h3");
+    let picture = document.createElement("img");
+    let nat = document.createElement("h3");
+
+    // This is what is displayed
+    name.innerText = indivCust.name;
+    location.innerText = indivCust.city;
+    email.innerText = indivCust.email;
+    dob.innerText = indivCust.dob;
+    registered.innerText = indivCust.registered;
+    phone.innerText = indivCust.phone;
+    cell.innerText = indivCust.cell;
+    id.innerText = indivCust.id;
+    picture.innerText = `suppose to be ${indivCust.picture}`;
+    nat.innerText = indivCust.nat;
+
+    //putting everything I want displayed into one div
+    personDiv.appendChild(name);
+    personDiv.appendChild(location);
+    personDiv.appendChild(email);
+    personDiv.appendChild(dob);
+    personDiv.appendChild(registered);
+    personDiv.appendChild(phone);
+    personDiv.appendChild(cell);
+    personDiv.appendChild(id);
+    personDiv.appendChild(picture);
+    personDiv.appendChild(nat);
+
+    //putting this in the id area in html
+    customerCont.appendChild(personDiv);
+    personDiv.classList.add("box");
+    // add styles to the div using a class
+  }
+} //this is the end of the function
+
+customerGrid(newCust);
+
+// // meant to hide people
+function hidePeople(container) {
+  let personDivs = container.querySelectorAll(".box");
+  for (let div of personDivs) {
+    container.removeChild(div);
+  }}
+// //   //button to show everyone id reference
+const showMeButton = document.querySelector("#test")
+
+showMeButton.addEventListener("click", (event) => {
+  if (showMeButton.innerText === "Hide my people!") {
+    hidePeople(customerCont);
+    showMeButton.innerText = "Show me my people!";
+  } else {
+    customerGrid(newCust);
+    showMeButton.innerText = "Hide my people!";
+  }
+})
