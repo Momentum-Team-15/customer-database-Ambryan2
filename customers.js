@@ -571,7 +571,7 @@ for (let i = 0; i<newCust.length; i++){
   let birthD = newCust[i].dob
   let med = newCust[i].picture 
 
-  let personImg = med.medium
+  let personImg = med.large
   let custEmail = newCust[i].email
   let address = locat.street.number + ' ' + locat.street.name;
   let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
@@ -580,32 +580,6 @@ for (let i = 0; i<newCust.length; i++){
   let customerSince = 'Customer since: ' + regi.date
 }
 
-
-// // //function For filtering later 
-// // let filteredCust = newCust.filter(function (client) {
-// //   //need to figure out a way so that it filters out by location so 'sophia emal' doesn't have to be physically inputted and instead a variable
-// //   if (client.email === 'sophia.burns@example.com') {
-// //     console.log('sophia worked') }
-// //   else { console.log('idk yet') }
-// });
-
-//For loop that works to get strings out from which I want them
-// for (let i = 0; i<newCust.length; i++){
-//     let locat = newCust[i].location;
-//     let regi = newCust[i].registered
-//     let custTitle = newCust[i].name;
-//     let birthD = newCust[i].dob
-//     let med = newCust[i].picture 
-  
-//     let personImg = med.medium
-//     let custEmail = newCust[i].email
-//     let address = locat.street.number + ' ' + locat.street.name;
-//     let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
-//     let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
-//     let birthday = 'DOB: ' + birthD.date 
-//     let customerSince = 'Customer since: ' + regi.date
-//   }
-
 //this makes a variable connect to my html element with the specific if
 
 const customerCont = document.querySelector('#pplCont');
@@ -613,9 +587,6 @@ const customerCont = document.querySelector('#pplCont');
 //Function that allows people to be displayed
 
 function customerGrid(customerArray) {
-  
-  
-  
   // for (let indivCust of customerArray)
   for (let i = 0; i<customerArray.length; i++)
   {
