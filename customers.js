@@ -561,27 +561,6 @@ let newCust = customers.slice();
 //function for taking out things in array and making them  string
 let displayText = []
 
-
-//this will pull out info for everyperson only works when once in an object
-// for (let i = 0; i<newCust.length; i++){
-//   console.log(newCust[i].email)
-//   }
-
-// //this will pull out info for everyperson when the object is in an object
-// for (let i = 0; i<newCust.length; i++){
-//   let custTitle = newCust[i].name;
-//   let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
-//   // console.log(custName)
-// }
-
-// //this will pull out info for everyone when the object is in an object in an object
-// for (let i = 0; i<newCust.length; i++){
-//   let locat = newCust[i].location;
-//   let test2 = locat.street.number + ' ' + locat.street.name;
-//   // for ()
-//   console.log(test2)
-// }
-
 //copy of above
 
 //should filter out info on table so it can later be put into table
@@ -663,20 +642,10 @@ function customerGrid(customerArray) {
     // let phone = document.createElement("p");
     // let cell = document.createElement("p");
     // let id = document.createElement("p");
-    let picture = document.createElement("h3");
+    let picture = document.createElement("img");
     // let nat = document.createElement("p");
 
-//     // This is what is displayed
-    // name.innerText = indivCust.name;
-    // location.innerText = indivCust.city;
-    // email.innerText = indivCust.email;
-    // dob.innerText = indivCust.dob;
-    // registered.innerText = indivCust.registered;
-    // phone.innerText = indivCust.phone;
-    // cell.innerText = indivCust.cell;
-    // id.innerText = indivCust.id;
-    // picture.innerText = `suppose to be ${indivCust.picture}`;
-    // nat.innerText = indivCust.nat;
+    // This is what is displayed
     name.innerText = custName;
     location.innerText = address + zip;
     email.innerText = custEmail;
@@ -685,7 +654,7 @@ function customerGrid(customerArray) {
     // phone.innerText = indivCust.phone;
     // cell.innerText = indivCust.cell;
     // id.innerText = indivCust.id;
-    picture.innerText = `suppose to be: ${personImg}`;
+    picture.src = personImg;
     // nat.innerText = indivCust.nat;
 
 //     //putting everything I want displayed into one div
