@@ -561,8 +561,46 @@ let newCust = customers.slice();
 //function for taking out things in array and making them  string
 let displayText = []
 
-//trying to console.log() a specific location in the array that can change
 
+//this will pull out info for everyperson only works when once in an object
+// for (let i = 0; i<newCust.length; i++){
+//   console.log(newCust[i].email)
+//   }
+
+// //this will pull out info for everyperson when the object is in an object
+// for (let i = 0; i<newCust.length; i++){
+//   let custTitle = newCust[i].name;
+//   let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+//   // console.log(custName)
+// }
+
+// //this will pull out info for everyone when the object is in an object in an object
+// for (let i = 0; i<newCust.length; i++){
+//   let locat = newCust[i].location;
+//   let test2 = locat.street.number + ' ' + locat.street.name;
+//   // for ()
+//   console.log(test2)
+// }
+
+//copy of above
+
+//should make everything above shorter
+for (let i = 0; i<newCust.length; i++){
+  let locat = newCust[i].location;
+  let address = locat.street.number + ' ' + locat.street.name;
+  let custTitle = newCust[i].name;
+  let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+
+  console.log(newCust[i].email)
+  console.log(custName)
+  console.log(address)
+}
+
+
+let test = newCust[0].email
+// console.log(`test is ${test}.`)
+
+//function For later 
 let filteredCust = newCust.filter(function (client) {
   //need to figure out a way so that it filters out by location so 'sophia emal' doesn't have to be physically inputted and instead a variable
   if (client.email === 'sophia.burns@example.com') {
