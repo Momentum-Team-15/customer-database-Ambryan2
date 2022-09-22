@@ -556,38 +556,37 @@ let customers = [
 
 //duplicates the array
 let newCust = customers.slice();
-// console.log(newCust);
 
-//function for taking out things in array and making them  string
-let displayText = []
-
-//copy of above
-
-//should filter out info on table so it can later be put into table
 for (let i = 0; i<newCust.length; i++){
-  let locat = newCust[i].location;
-  let regi = newCust[i].registered
-  let custTitle = newCust[i].name;
-  let birthD = newCust[i].dob
-  let med = newCust[i].picture 
+    // let locat = customerArray[i].location;
+    // let regi = customerArray[i].registered
+    // let custTitle = customerArray[i].name;
+    let birthDip = newCust[i].dob
+    // let med = customerArray[i].picture 
+  
+    // let personImg = med.large
+    // let custEmail = customerArray[i].email
+    // let address = locat.street.number + ' ' + locat.street.name;
+    // let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
+    // let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
+    let test3 = 'DOB: ' + moment().format(birthDip.date); 
+    console.log(test3)
+  //   let customerSince = 'Customer since: ' + regi.date
+  }
 
-  let personImg = med.large
-  let custEmail = newCust[i].email
-  let address = locat.street.number + ' ' + locat.street.name;
-  let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
-  let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
-  let birthday = 'DOB: ' + birthD.date 
-  let customerSince = 'Customer since: ' + regi.date
+
+
+
+//functionto uppercase first letter
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 //this makes a variable connect to my html element with the specific if
-
 const customerCont = document.querySelector('#pplCont');
 
 //Function that allows people to be displayed
-
 function customerGrid(customerArray) {
-  // for (let indivCust of customerArray)
+  // this for loop goes through everything and allows me to use the variable i to select items in the custom array
   for (let i = 0; i<customerArray.length; i++)
   {
     let locat = customerArray[i].location;
@@ -596,20 +595,20 @@ function customerGrid(customerArray) {
     let birthD = customerArray[i].dob
     let med = customerArray[i].picture 
   
-    let personImg = med.medium
+    let personImg = med.large
     let custEmail = customerArray[i].email
     let address = locat.street.number + ' ' + locat.street.name;
     let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
-    let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
-    let birthday = 'DOB: ' + birthD.date 
+    let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
+    let birthday = 'DOB: ' //+ moment().format(birthD.date); 
     let customerSince = 'Customer since: ' + regi.date
     
     let personDiv = document.createElement("div");
     let name = document.createElement("h2");
-    let location = document.createElement("h3");
-    let email = document.createElement("h3");
-    let dob = document.createElement("h3");
-    let registered = document.createElement("h3");
+    let location = document.createElement("p");
+    let email = document.createElement("p");
+    let dob = document.createElement("p");
+    let registered = document.createElement("p");
     // let phone = document.createElement("p");
     // let cell = document.createElement("p");
     // let id = document.createElement("p");
@@ -618,7 +617,7 @@ function customerGrid(customerArray) {
 
     // This is what is displayed
     name.innerText = custName;
-    location.innerText = address + zip;
+    location.innerText = address + ', ' + zip;
     email.innerText = custEmail;
     dob.innerText = birthday;
     registered.innerText = customerSince;

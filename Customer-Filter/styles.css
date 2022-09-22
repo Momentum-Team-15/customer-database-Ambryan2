@@ -11,17 +11,23 @@
     display: flex;
     flex-flow: wrap column;
     align-items: center;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
     font-family: sans-serif;
     width: 20%;
-    /* height: 200px; */
     padding: 2px;
     border: 4px solid white;
     font-size: 10px;
 }  
 img{
     height:auto;
-    width:100%;
+    width:80%;
+    border-radius: 2em;
+}
+p{
+    margin: 5px 0px;
+    font-size: 12px;
+    justify-items: center;
+    width: 80%;
 }
 .filterCont{
     margin: 0px auto 0px auto;
