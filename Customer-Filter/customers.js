@@ -557,26 +557,6 @@ let customers = [
 //duplicates the array
 let newCust = customers.slice();
 
-for (let i = 0; i<newCust.length; i++){
-    // let locat = customerArray[i].location;
-    // let regi = customerArray[i].registered
-    // let custTitle = customerArray[i].name;
-    let birthDip = newCust[i].dob
-    // let med = customerArray[i].picture 
-  
-    // let personImg = med.large
-    // let custEmail = customerArray[i].email
-    // let address = locat.street.number + ' ' + locat.street.name;
-    // let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
-    // let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
-    let test3 = 'DOB: ' + moment().format(birthDip.date); 
-    console.log(test3)
-  //   let customerSince = 'Customer since: ' + regi.date
-  }
-
-
-
-
 //functionto uppercase first letter
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -598,10 +578,10 @@ function customerGrid(customerArray) {
     let personImg = med.large
     let custEmail = customerArray[i].email
     let address = locat.street.number + ' ' + locat.street.name;
-    let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
+    let zip = locat.city + ' ' + nameToAbbr(locat.state) + ' ' + locat.postcode
     let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
-    let birthday = 'DOB: ' //+ moment().format(birthD.date); 
-    let customerSince = 'Customer since: ' + regi.date
+    let birthday = 'DOB: ' + moment(birthD.date).format("MMM Do YY"); 
+    let customerSince = 'Customer since: ' + moment(regi.date).format("MMM Do YY")
     
     let personDiv = document.createElement("div");
     let name = document.createElement("h2");
@@ -609,10 +589,10 @@ function customerGrid(customerArray) {
     let email = document.createElement("p");
     let dob = document.createElement("p");
     let registered = document.createElement("p");
+    let picture = document.createElement("img");
     // let phone = document.createElement("p");
     // let cell = document.createElement("p");
     // let id = document.createElement("p");
-    let picture = document.createElement("img");
     // let nat = document.createElement("p");
 
     // This is what is displayed
@@ -621,10 +601,11 @@ function customerGrid(customerArray) {
     email.innerText = custEmail;
     dob.innerText = birthday;
     registered.innerText = customerSince;
+    picture.src = personImg;
     // phone.innerText = indivCust.phone;
     // cell.innerText = indivCust.cell;
     // id.innerText = indivCust.id;
-    picture.src = personImg;
+    
     // nat.innerText = indivCust.nat;
 
 //     //putting everything I want displayed into one div
