@@ -561,7 +561,7 @@ console.log(newCust);
 //function for taking out things in array and making them  string
 let displayText = []
 
-let filterCustomers = newCust.filter(function (client) {
+let filteredCust = newCust.filter(function (client) {
   if (client.email === 'sophia.burns@example.com') {
     console.log('sophia worked') }
   else { console.log('idk yet') }
