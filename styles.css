@@ -4,7 +4,7 @@
     flex-flow: row wrap;
     justify-content: space-around;
     border: 2px solid black;
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 .box{
@@ -17,6 +17,7 @@
     height: 400px;
     padding: 2px;
     border: 4px solid white;
+    font-size: 10px;
 
 }  
 .filterCont{

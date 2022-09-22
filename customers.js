@@ -584,108 +584,155 @@ let displayText = []
 
 //copy of above
 
-//should make everything above shorter
+//should filter out info on table so it can later be put into table
 for (let i = 0; i<newCust.length; i++){
   let locat = newCust[i].location;
-  let address = locat.street.number + ' ' + locat.street.name;
+  let regi = newCust[i].registered
   let custTitle = newCust[i].name;
-  let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+  let birthD = newCust[i].dob
+  let med = newCust[i].picture 
 
-  console.log(newCust[i].email)
-  console.log(custName)
-  console.log(address)
+  let personImg = med.medium
+  let custEmail = newCust[i].email
+  let address = locat.street.number + ' ' + locat.street.name;
+  let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
+  let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+  let birthday = 'DOB: ' + birthD.date 
+  let customerSince = 'Customer since: ' + regi.date
 }
 
 
-let test = newCust[0].email
-// console.log(`test is ${test}.`)
+// // //function For filtering later 
+// // let filteredCust = newCust.filter(function (client) {
+// //   //need to figure out a way so that it filters out by location so 'sophia emal' doesn't have to be physically inputted and instead a variable
+// //   if (client.email === 'sophia.burns@example.com') {
+// //     console.log('sophia worked') }
+// //   else { console.log('idk yet') }
+// });
 
-//function For later 
-let filteredCust = newCust.filter(function (client) {
-  //need to figure out a way so that it filters out by location so 'sophia emal' doesn't have to be physically inputted and instead a variable
-  if (client.email === 'sophia.burns@example.com') {
-    console.log('sophia worked') }
-  else { console.log('idk yet') }
-});
-
-
+//For loop that works to get strings out from which I want them
+// for (let i = 0; i<newCust.length; i++){
+//     let locat = newCust[i].location;
+//     let regi = newCust[i].registered
+//     let custTitle = newCust[i].name;
+//     let birthD = newCust[i].dob
+//     let med = newCust[i].picture 
+  
+//     let personImg = med.medium
+//     let custEmail = newCust[i].email
+//     let address = locat.street.number + ' ' + locat.street.name;
+//     let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
+//     let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+//     let birthday = 'DOB: ' + birthD.date 
+//     let customerSince = 'Customer since: ' + regi.date
+//   }
 
 //this makes a variable connect to my html element with the specific if
 
-// const customerCont = document.querySelector('#pplCont');
+const customerCont = document.querySelector('#pplCont');
 
 //Function that allows people to be displayed
 
-// // function customerGrid(customerArray) {
-//   for (let indivCust of customerArray) {
-//     let personDiv = document.createElement("div");
-//     let name = document.createElement("h2");
-//     let location = document.createElement("h3");
-//     let email = document.createElement("h3");
-//     let dob = document.createElement("h3");
-//     let registered = document.createElement("h3");
-//     let phone = document.createElement("h3");
-//     let cell = document.createElement("h3");
-//     let id = document.createElement("h3");
-//     let picture = document.createElement("img");
-//     let nat = document.createElement("h3");
+function customerGrid(customerArray) {
+  
+  
+  
+  // for (let indivCust of customerArray)
+  for (let i = 0; i<customerArray.length; i++)
+  {
+    let locat = customerArray[i].location;
+    let regi = customerArray[i].registered
+    let custTitle = customerArray[i].name;
+    let birthD = customerArray[i].dob
+    let med = customerArray[i].picture 
+  
+    let personImg = med.medium
+    let custEmail = customerArray[i].email
+    let address = locat.street.number + ' ' + locat.street.name;
+    let zip = locat.city + ' ' + locat.state + ' ' + locat.postcode
+    let custName = custTitle.title + ' '+ custTitle.first + ' '+ custTitle.last
+    let birthday = 'DOB: ' + birthD.date 
+    let customerSince = 'Customer since: ' + regi.date
+    
+    let personDiv = document.createElement("div");
+    let name = document.createElement("h2");
+    let location = document.createElement("h3");
+    let email = document.createElement("h3");
+    let dob = document.createElement("h3");
+    let registered = document.createElement("h3");
+    // let phone = document.createElement("p");
+    // let cell = document.createElement("p");
+    // let id = document.createElement("p");
+    let picture = document.createElement("h3");
+    // let nat = document.createElement("p");
 
 //     // This is what is displayed
-//     name.innerText = indivCust.name;
-//     location.innerText = indivCust.city;
-//     email.innerText = indivCust.email;
-//     dob.innerText = indivCust.dob;
-//     registered.innerText = indivCust.registered;
-//     phone.innerText = indivCust.phone;
-//     cell.innerText = indivCust.cell;
-//     id.innerText = indivCust.id;
-//     picture.innerText = `suppose to be ${indivCust.picture}`;
-//     nat.innerText = indivCust.nat;
+    // name.innerText = indivCust.name;
+    // location.innerText = indivCust.city;
+    // email.innerText = indivCust.email;
+    // dob.innerText = indivCust.dob;
+    // registered.innerText = indivCust.registered;
+    // phone.innerText = indivCust.phone;
+    // cell.innerText = indivCust.cell;
+    // id.innerText = indivCust.id;
+    // picture.innerText = `suppose to be ${indivCust.picture}`;
+    // nat.innerText = indivCust.nat;
+    name.innerText = custName;
+    location.innerText = address + zip;
+    email.innerText = custEmail;
+    dob.innerText = birthday;
+    registered.innerText = customerSince;
+    // phone.innerText = indivCust.phone;
+    // cell.innerText = indivCust.cell;
+    // id.innerText = indivCust.id;
+    picture.innerText = `suppose to be: ${personImg}`;
+    // nat.innerText = indivCust.nat;
 
 //     //putting everything I want displayed into one div
-//     personDiv.appendChild(name);
-//     personDiv.appendChild(location);
-//     personDiv.appendChild(email);
-//     personDiv.appendChild(dob);
-//     personDiv.appendChild(registered);
-//     personDiv.appendChild(phone);
-//     personDiv.appendChild(cell);
-//     personDiv.appendChild(id);
-//     personDiv.appendChild(picture);
-//     personDiv.appendChild(nat);
+    personDiv.appendChild(picture);
+    personDiv.appendChild(name);
+    personDiv.appendChild(email);
+    personDiv.appendChild(location);
+    personDiv.appendChild(dob);
+    personDiv.appendChild(registered);
+    // personDiv.appendChild(phone);
+    // personDiv.appendChild(cell);
+    // personDiv.appendChild(id);
+    
+    // personDiv.appendChild(nat);
 
 //     //putting this in the id area in html
-//     customerCont.appendChild(personDiv);
-//     personDiv.classList.add("box");
-//     // add styles to the div using a class
-//   }
-// } 
+    customerCont.appendChild(personDiv);
+    personDiv.classList.add("box");
+    // add styles to the div using a class
+  }
+} 
 
 //this is the end of the function
 
 // // meant to hide people
 
-// function hidePeople(container) {
-//   let personDivs = container.querySelectorAll(".box");
-//   for (let div of personDivs) {
-//     container.removeChild(div);
-//   }}
+function hidePeople(container) {
+  let personDivs = container.querySelectorAll(".box");
+  for (let div of personDivs) {
+    container.removeChild(div);
+  }}
 
 // //   //button to show everyone id reference
 
-// const showMeButton = document.querySelector("#test")
+const showMeButton = document.querySelector("#test")
 
 //buttons that shows everyone 
 
-// showMeButton.addEventListener("click", (event) => {
-//   if (showMeButton.innerText === "Hide my people!") {
-//     hidePeople(customerCont);
-//     showMeButton.innerText = "Show me my people!";
-//   } else {
-//     customerGrid(newCust);
-//     showMeButton.innerText = "Hide my people!";
-//   }
-// })
+showMeButton.addEventListener("click", (event) => {
+  if (showMeButton.innerText === "Hide my people!") {
+    hidePeople(customerCont);
+    showMeButton.innerText = "Show me my people!";
+  } else {
+    customerGrid(newCust);
+    showMeButton.innerText = "Hide my people!";
+  }
+})
 
 //plan of attack right now
 // 1) alter array so that everything can be read
