@@ -582,7 +582,7 @@ function customerGrid(customerArray) {
     let address = locat.street.number + ' ' + locat.street.name;
     let zip = locat.city + ' ' + nameToAbbr(locat.state) + ' ' + locat.postcode
     let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
-    let birthday = 'DOB: ' + moment(birthD.date).format("MMM Do YY"); 
+    let birthday = `DOB: ${moment(birthD.date).format("MMM Do YY")}`; 
     let customerSince = 'Customer since: ' + moment(regi.date).format("MMM Do YY")
     
     
