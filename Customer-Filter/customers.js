@@ -610,7 +610,7 @@ function customerGrid(customerArray) {
     // id.innerText = indivCust.id;
     // nat.innerText = indivCust.nat;
     email.classList.add("test");
-//     //putting everything I want displayed into one div
+     //putting everything I want displayed into one div
     personDiv.appendChild(picture);
     personDiv.appendChild(name);
     personDiv.appendChild(email);
@@ -630,18 +630,15 @@ function customerGrid(customerArray) {
   masterPeopleCont.classList.add("peopleCont");
   customerCont.appendChild(masterPeopleCont)
 } 
-//this is the end of the function
+// customerGrid(newCust);
 
-
-//button to show everyone id reference
+//button to show and hide people
 const showMeButton = document.querySelector("#showMe")
-//meant to hide people
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   for (let div of personDivs) {
     container.removeChild(div);
   }}
-//buttons that shows everyone 
 showMeButton.addEventListener("click", (event) => {
   if (showMeButton.innerText === "Hide my customers!") {
     hidePeople(customerCont);
