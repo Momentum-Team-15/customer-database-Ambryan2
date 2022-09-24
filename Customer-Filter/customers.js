@@ -565,23 +565,25 @@ function capitalizeFirstLetter(string) {
 //References to the buttons displayed
 const customerCont = document.querySelector('#pplCont');
 const showMeButton = document.querySelector("#showMe")
-const nameForm = document.querySelector('#filter') 
+const nameForm = document.querySelector('#filter')
+
+// const nameFilterButton = document.querySelector('searchButton')
 
 //variable for finder function
-let pplSelect = ['sophia', 'russell']
+let pplSelect = []//'sophia', 'russell'
 let pplInArray = [] //this is going to be the information with people in pplSelect
 
 //this function goes selects the people in the array that match pplSelect
 function finder() {
-    for (let j = 0; j < pplSelect.length; j++) {
-        for (let i = 0; i < newCust.length; i++) {
-            if (newCust[i].name.first === pplSelect[j]) {
-                pplInArray.push(newCust[i])//this all the info of peoples names selected
-                console.log('found them')
-            }
-            else { console.log('no find them') }
-        }
+  for (let j = 0; j < pplSelect.length; j++) {
+    for (let i = 0; i < newCust.length; i++) {
+      if (newCust[i].name.first === pplSelect[j]) {
+        pplInArray.push(newCust[i])//this all the info of peoples names selected
+        console.log('found them')
+      }
+      else { console.log('no find them') }
     }
+  }
 };
 
 // console.log(pplInArray)
@@ -590,18 +592,17 @@ function finder() {
 function customerGrid(customerArray) {
   //this is the canvas where the button for all customers is
   let allPeopleCont = document.createElement("div");
-  
+
   // this for loop creates the elements that will be displayed
-  for (let i = 0; i<customerArray.length; i++)
-  {
+  for (let i = 0; i < customerArray.length; i++) {
     let personImg = customerArray[i].picture.large
     let custEmail = customerArray[i].email
     let address = customerArray[i].location.street.number + ' ' + customerArray[i].location.street.name;
     let zip = customerArray[i].location.city + ' ' + nameToAbbr(customerArray[i].location.state) + ' ' + customerArray[i].location.postcode
-    let custName = capitalizeFirstLetter(customerArray[i].name.title) + ' '+ capitalizeFirstLetter(customerArray[i].name.first) + ' '+ capitalizeFirstLetter(customerArray[i].name.last)
-    let birthday = `DOB: ${moment(customerArray[i].dob.date).format("MMM Do YY")}`; 
+    let custName = capitalizeFirstLetter(customerArray[i].name.title) + ' ' + capitalizeFirstLetter(customerArray[i].name.first) + ' ' + capitalizeFirstLetter(customerArray[i].name.last)
+    let birthday = `DOB: ${moment(customerArray[i].dob.date).format("MMM Do YY")}`;
     let customerSince = 'Customer since: ' + moment(customerArray[i].registered.date).format("MMM Do YY")
-    
+
     let personDiv = document.createElement("div");
     let name = document.createElement("h2");
     let location = document.createElement("p");
@@ -626,7 +627,7 @@ function customerGrid(customerArray) {
     // id.innerText = indivCust.id;
     // nat.innerText = indivCust.nat;
     email.classList.add("test");
-     //putting everything I want displayed into one div
+    //putting everything I want displayed into one div
     personDiv.appendChild(picture);
     personDiv.appendChild(name);
     personDiv.appendChild(email);
@@ -645,41 +646,48 @@ function customerGrid(customerArray) {
   //this then adds styling to canvas so that the elements go where I want them to 
   allPeopleCont.classList.add("peopleCont");
   customerCont.appendChild(allPeopleCont)
-} 
+}
 //function that creates the filter container
-function nameFilter(customerArray){
+function nameFilter(customerArray) {
   let allNameFilter = document.createElement('form');
   let formDiv = document.createElement('div');
-  let nameInput = document.createElement('label');
-  let input = document.createElement('input');
   let search = document.createElement('button')
 
   search.innerText = 'Search'
   allNameFilter.innerText = 'Name Filter';
-  nameInput.innerText = 'Search for name';
-  input.type = 'text'
 
-allNameFilter.classList.add('filterField')
+  search.setAttribute('id', 'searchButton')
+  allNameFilter.classList.add('filterField')
 
-  formDiv.appendChild(nameInput);
-  formDiv.appendChild(input);
+  for (let i = 0; i < customerArray.length; i++) {
+    let input = document.createElement('input');
+    let nameInput = document.createElement('label');
+
+    nameInput.innerText = `${customerArray[i].name.first}`;
+    input.value = customerArray[i].name.first
+    input.type = 'checkbox';
+    input.setAttribute('id', customerArray[i].name.first)
+
+    formDiv.appendChild(input);
+    formDiv.appendChild(nameInput)
+  }
+
   allNameFilter.appendChild(formDiv);
   allNameFilter.appendChild(search);
   customerCont.appendChild(allNameFilter);
 }
 
-
-
-//buttons to hide selected
+//buttons to hide selected buttons
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   let formLook = container.querySelectorAll(".filterField");
-  for (let form of formLook){
+  for (let form of formLook) {
     container.removeChild(form) //this removes form
   }
   for (let div of personDivs) {
     container.removeChild(div);
-  }}
+  }
+}
 
 //Button to show everyone
 showMeButton.addEventListener("click", (event) => {
@@ -688,23 +696,166 @@ showMeButton.addEventListener("click", (event) => {
     showMeButton.innerText = "Show all my customers!";
   } else {
     hidePeople(customerCont)//clears anything that was selected before
-    nameForm.innerText="Filter by name";
+    nameForm.innerText = "Filter by name";
     customerGrid(newCust);
     showMeButton.innerText = "Hide my customers!";
   }
 })
 
+// const nameFilterButton = document.querySelector('#accept')
+// const searchPplButton = document.querySelector('searchButton')
 
-//button to show filter
-nameForm.addEventListener("click", (event)=> {
-  if (nameForm.innerText === "Hide name filter"){
+//button to show filter button 
+nameForm.addEventListener("click", (event) => {
+  if (nameForm.innerText === "Hide name filter") {
     hidePeople(customerCont);
-    nameForm.innerText = "Filter by name";}
+    nameForm.innerText = "Filter by name";
+  }
   else {
     hidePeople(customerCont)//clears anything that was selected before
     showMeButton.innerText = 'Show all my customers!';
     nameFilter(newCust);
     nameForm.innerText = "Hide name filter";
+    //reference to the input created for each person in the function nameFilter
+    const sophia = document.querySelector('#sophia');
+    const krin = document.querySelector('#krin');
+    const letitia = document.querySelector('#letitia');
+    const margie = document.querySelector('#margie');
+    const cristina = document.querySelector('#cristina');
+    const laurie = document.querySelector('#laurie');
+    const russell = document.querySelector('#russell');
+    const carmen = document.querySelector('#carmen');
+    const erika = document.querySelector('#erika');
+    const clifford = document.querySelector('#clifford');
+    const cody = document.querySelector('#cody');
+    const miguel = document.querySelector('#miguel');
+//these make the chekbox responsive
+    sophia.addEventListener("click", (event) => {
+      if (sophia.checked) {
+        if (sophia.value === 'sophia') {
+          pplSelect.push(sophia.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    krin.addEventListener("click", (event) => {
+      if (krin.checked) {
+        if (krin.value === 'krin') {
+          pplSelect.push(krin.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+    letitia.addEventListener("click", (event) => {
+      if (letitia.checked) {
+        if (letitia.value === 'letitia') {
+          pplSelect.push(letitia.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    margie.addEventListener("click", (event) => {
+      if (margie.checked) {
+        if (margie.value === 'margie') {
+          pplSelect.push(margie.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    cristina.addEventListener("click", (event) => {
+      if (cristina.checked) {
+        if (cristina.value === 'cristina') {
+          pplSelect.push(cristina.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    laurie.addEventListener("click", (event) => {
+      if (laurie.checked) {
+        if (laurie.value === 'laurie') {
+          pplSelect.push(laurie.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+    russell.addEventListener("click", (event) => {
+      if (russell.checked) {
+        if (russell.value === 'russell') {
+          pplSelect.push(russell.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    carmen.addEventListener("click", (event) => {
+      if (carmen.checked) {
+        if (carmen.value === 'carmen') {
+          pplSelect.push(carmen.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    erika.addEventListener("click", (event) => {
+      if (erika.checked) {
+        if (erika.value === 'erika') {
+          pplSelect.push(erika.value)
+          console.log(pplSelect)
+        }
+      }
+    })
+
+    clifford.addEventListener("click", (event) => {
+      if (clifford.checked) {
+        if (clifford.value === 'clifford') {
+          pplSelect.push(clifford.value)
+          console.log(pplSelect);
+        }
+      }
+    })
+    cody.addEventListener("click", (event) => {
+      if (cody.checked) {
+        if (cody.value === 'cody') {
+          pplSelect.push(cody.value)
+          console.log(pplSelect);
+        }
+      }
+    })
+
+    miguel.addEventListener("click", (event) => {
+      if (miguel.checked) {
+        if (miguel.value === 'miguel') {
+          pplSelect.push(miguel.value)
+          console.log(pplSelect);
+        }
+      }
+   
+   
+    })
+
+
+    // switch (nameFormDisplay.value)
+    // {
+    //   case "sophia":pplSelect.push(nameFormDisplay.value); console.log(pplSelect);break;
+    //   case "krin":pplSelect.push(nameFormDisplay.value);console.log(pplSelect); break;
+    //   case "letitia":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "margie":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "cristina":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "laurie":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "russell":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "carmen":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "erika":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "clifford":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "cody":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    //   case "miguel":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
+    // }
   }
-  })
+})
+
+
+
 
