@@ -664,19 +664,3 @@ showMeButton.addEventListener("click", (event) => {
     showMeButton.innerText = "Hide my customers!";
   }
 })
-
-
-// function findPeopleByCity (peopleArray, city) {
-//   // given a city and an array of people, find all the person objects whose city is the same as the given city and return them in an array
-//   let sameCityPeople = [];
-//   // find people whose cities match and put them in this new array
-//   // check every person and see if their city is the same as the given city
-//   // if it matches, push them into the new array
-//   for (let person of peopleArray) {
-//     if (person.city === city) {
-//       sameCityPeople.push(person);
-//     }
-//   }
-
-//   return sameCityPeople;
-// }
