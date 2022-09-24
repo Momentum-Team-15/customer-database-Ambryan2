@@ -670,7 +670,7 @@ allNameFilter.classList.add('filterField')
 
 
 
-//buttons to hide all people
+//buttons to hide selected
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   let formLook = container.querySelectorAll(".filterField");
@@ -687,18 +687,13 @@ showMeButton.addEventListener("click", (event) => {
     hidePeople(customerCont);
     showMeButton.innerText = "Show all my customers!";
   } else {
+    hidePeople(customerCont)//clears anything that was selected before
+    nameForm.innerText="Filter by name";
     customerGrid(newCust);
     showMeButton.innerText = "Hide my customers!";
   }
 })
 
-//button to hide form
-// function hidePeople(container) {
-//   let formLook = container.querySelectorAll(".filterField");
-//   for (let form of formLook){
-//     container.removeChild(form) //this removes form
-//   }
-//   }
 
 //button to show filter
 nameForm.addEventListener("click", (event)=> {
@@ -706,6 +701,8 @@ nameForm.addEventListener("click", (event)=> {
     hidePeople(customerCont);
     nameForm.innerText = "Filter by name";}
   else {
+    hidePeople(customerCont)//clears anything that was selected before
+    showMeButton.innerText = 'Show all my customers!';
     nameFilter(newCust);
     nameForm.innerText = "Hide name filter";
   }
