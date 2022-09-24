@@ -567,11 +567,14 @@ const customerCont = document.querySelector('#pplCont');
 const showMeButton = document.querySelector("#showMe")
 const bigRussell = document.querySelector('#bigRuss') 
 
-//Function that displays all customers
+//Function that creates the visual for everyone 
 function customerGrid(customerArray) {
   //this is the canvas where the button for all customers is
   let masterPeopleCont = document.createElement("div");
-  // this for loop goes through everything and allows me to use the variable i to select items in the custom array
+
+  //want to make a way so I can manipulate the customer array length to be limited to elements I pre selected.
+
+  // this for loop creates the elements that will be displayed
   for (let i = 0; i<customerArray.length; i++)
   {
     let personImg = customerArray[i].picture.large
@@ -581,7 +584,6 @@ function customerGrid(customerArray) {
     let custName = capitalizeFirstLetter(customerArray[i].name.title) + ' '+ capitalizeFirstLetter(customerArray[i].name.first) + ' '+ capitalizeFirstLetter(customerArray[i].name.last)
     let birthday = `DOB: ${moment(customerArray[i].dob.date).format("MMM Do YY")}`; 
     let customerSince = 'Customer since: ' + moment(customerArray[i].registered.date).format("MMM Do YY")
-    
     
     let personDiv = document.createElement("div");
     let name = document.createElement("h2");
@@ -644,18 +646,6 @@ showMeButton.addEventListener("click", (event) => {
   }
 })
 
-//finding people 
-function findPeople (randomArray, name) {
-  let specificP = [];
-  for (let person of randomArray) {
-    if (person.name.first === name) {
-      specificP.push(person);
-    }
-  }
-  return specificP;
-}
-
-console.log(newCust, 'Russell')
 
 // function findPeopleByCity (peopleArray, city) {
 //   // given a city and an array of people, find all the person objects whose city is the same as the given city and return them in an array
