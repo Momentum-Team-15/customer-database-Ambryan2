@@ -567,12 +567,30 @@ const customerCont = document.querySelector('#pplCont');
 const showMeButton = document.querySelector("#showMe")
 const bigRussell = document.querySelector('#bigRuss') 
 
+//variable for finder function
+let pplSelect = ['sophia', 'russell']
+let pplInArray = [] //this is going to be the information with people in pplSelect
+
+//this function goes selects the people in the array that match pplSelect
+function finder() {
+    for (let j = 0; j < pplSelect.length; j++) {
+        for (let i = 0; i < newCust.length; i++) {
+            if (newCust[i].name.first === pplSelect[j]) {
+                pplInArray.push(newCust[i])//this all the info of peoples names selected
+                console.log('found them')
+            }
+            else { console.log('no find them') }
+        }
+    }
+};
+
+console.log(pplInArray)
+console.log(finder(pplSelect))
+
 //Function that creates the visual for everyone 
 function customerGrid(customerArray) {
   //this is the canvas where the button for all customers is
   let masterPeopleCont = document.createElement("div");
-
-  //want to make a way so I can manipulate the customer array length to be limited to elements I pre selected.
 
   // this for loop creates the elements that will be displayed
   for (let i = 0; i<customerArray.length; i++)
@@ -641,7 +659,8 @@ showMeButton.addEventListener("click", (event) => {
     hidePeople(customerCont);
     showMeButton.innerText = "Show all my customers!";
   } else {
-    customerGrid(newCust);
+    customerGrid(pplInArray);
+    // customerGrid(newCust);
     showMeButton.innerText = "Hide my customers!";
   }
 })
