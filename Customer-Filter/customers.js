@@ -561,29 +561,26 @@ let newCust = customers.slice();
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-//this makes a variable connect to my html element with the specific if
-const customerCont = document.querySelector('#pplCont');
 
-//Function that allows people to be displayed
+//References to the buttons displayed
+const customerCont = document.querySelector('#pplCont');
+const showMeButton = document.querySelector("#showMe")
+const bigRussell = document.querySelector('#bigRuss') 
+
+//Function that displays all customers
 function customerGrid(customerArray) {
   //this is the canvas where the button for all customers is
   let masterPeopleCont = document.createElement("div");
   // this for loop goes through everything and allows me to use the variable i to select items in the custom array
   for (let i = 0; i<customerArray.length; i++)
   {
-    let locat = customerArray[i].location;
-    let regi = customerArray[i].registered
-    let custTitle = customerArray[i].name;
-    let birthD = customerArray[i].dob
-    let med = customerArray[i].picture 
-  
-    let personImg = med.large
+    let personImg = customerArray[i].picture.large
     let custEmail = customerArray[i].email
-    let address = locat.street.number + ' ' + locat.street.name;
-    let zip = locat.city + ' ' + nameToAbbr(locat.state) + ' ' + locat.postcode
-    let custName = capitalizeFirstLetter(custTitle.title) + ' '+ capitalizeFirstLetter(custTitle.first) + ' '+ capitalizeFirstLetter(custTitle.last)
-    let birthday = `DOB: ${moment(birthD.date).format("MMM Do YY")}`; 
-    let customerSince = 'Customer since: ' + moment(regi.date).format("MMM Do YY")
+    let address = customerArray[i].location.street.number + ' ' + customerArray[i].location.street.name;
+    let zip = customerArray[i].location.city + ' ' + nameToAbbr(customerArray[i].location.state) + ' ' + customerArray[i].location.postcode
+    let custName = capitalizeFirstLetter(customerArray[i].name.title) + ' '+ capitalizeFirstLetter(customerArray[i].name.first) + ' '+ capitalizeFirstLetter(customerArray[i].name.last)
+    let birthday = `DOB: ${moment(customerArray[i].dob.date).format("MMM Do YY")}`; 
+    let customerSince = 'Customer since: ' + moment(customerArray[i].registered.date).format("MMM Do YY")
     
     
     let personDiv = document.createElement("div");
@@ -630,10 +627,8 @@ function customerGrid(customerArray) {
   masterPeopleCont.classList.add("peopleCont");
   customerCont.appendChild(masterPeopleCont)
 } 
-// customerGrid(newCust);
 
 //button to show and hide people
-const showMeButton = document.querySelector("#showMe")
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   for (let div of personDivs) {
@@ -649,26 +644,30 @@ showMeButton.addEventListener("click", (event) => {
   }
 })
 
-//another input to show specific people test
-const bigRussell = document.querySelector('#bigRuss') 
-
-function findPeople (newCust, name) {
-  let indivPerson = [];
-  for (let person of newCust) {
-    if (person.name.first === 'Russell') {
-      console.log('test worked');
+//finding people 
+function findPeople (randomArray, name) {
+  let specificP = [];
+  for (let person of randomArray) {
+    if (person.name.first === name) {
+      specificP.push(person);
     }
   }
+  return specificP;
 }
+
 console.log(newCust, 'Russell')
 
-// const indivPeople = newCust.filter(function(spotLight){ 
-// 	if(spotLight.name.first === 'Russell') {
-//     console.log('Big Russ has been spotted');
-// 	}
-// });
+// function findPeopleByCity (peopleArray, city) {
+//   // given a city and an array of people, find all the person objects whose city is the same as the given city and return them in an array
+//   let sameCityPeople = [];
+//   // find people whose cities match and put them in this new array
+//   // check every person and see if their city is the same as the given city
+//   // if it matches, push them into the new array
+//   for (let person of peopleArray) {
+//     if (person.city === city) {
+//       sameCityPeople.push(person);
+//     }
+//   }
 
-//plan of attack right now
-// 1) alter array so that everything can be read
-// 2) make this altering done by another function so that if more people are added they too can be inputted
-// 3) in the function I could use a looping switch that takes out the strings in each object
+//   return sameCityPeople;
+// }
