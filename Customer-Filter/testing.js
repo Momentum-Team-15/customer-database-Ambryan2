@@ -555,15 +555,32 @@ let customers = [
 
 let testArr = customers.slice();
 
-const customerFind = testArr.filter( (name)=>
-{
-    for (let i = 0; i<testArr.length; i++){
-    if (testArr[i].name.first === 'sophia'){
-        console.log('test has found sophia')
+//need the variable to then be determined by an input
+let persona = 'sophia'
+
+//this function finds people determined
+function finder(personB) {
+    for (let i=0; i<testArr.length;i++){
+        if(testArr[i].name.first === persona){
+            console.log('found them')
+        }
+        else{console.log('no find them')}
     }
-    else { 
-        console.log('other person');
-        break;}
 }
-}
-)
+
+console.log(finder(persona))
+
+    // const personA = testArr.filter(function (chocolate) {
+    //     if (chocolate.name.first === 'sophia') {
+    //         answer = chocolate.name.first
+    //         console.log(answer)
+    //     }
+    //     if (chocolate.name.first === 'christina'){
+    //         answer = chocolate.name.first
+    //         console.log(answer)
+    //     }
+    //     else {
+    //         answer = 'bla'
+    //     }
+    // })
+    // console.log(personA)
