@@ -565,7 +565,7 @@ function capitalizeFirstLetter(string) {
 //References to the buttons displayed
 const customerCont = document.querySelector('#pplCont');
 const showMeButton = document.querySelector("#showMe")
-const bigRussell = document.querySelector('#bigRuss') 
+const nameForm = document.querySelector('#filter') 
 
 //variable for finder function
 let pplSelect = ['sophia', 'russell']
@@ -584,14 +584,13 @@ function finder() {
     }
 };
 
-console.log(pplInArray)
-console.log(finder(pplSelect))
+// console.log(pplInArray)
 
 //Function that creates the visual for everyone 
 function customerGrid(customerArray) {
   //this is the canvas where the button for all customers is
-  let masterPeopleCont = document.createElement("div");
-
+  let allPeopleCont = document.createElement("div");
+  
   // this for loop creates the elements that will be displayed
   for (let i = 0; i<customerArray.length; i++)
   {
@@ -638,29 +637,77 @@ function customerGrid(customerArray) {
     // personDiv.appendChild(cell);
     // personDiv.appendChild(id);
     // personDiv.appendChild(nat);
-    masterPeopleCont.appendChild(personDiv); //this puts everything on the canvas made before loop
+    allPeopleCont.appendChild(personDiv); //this puts everything on the canvas made before loop
     //putting this in the id area in html
     personDiv.classList.add("box");
     // add styles to the div using a class
   }
   //this then adds styling to canvas so that the elements go where I want them to 
-  masterPeopleCont.classList.add("peopleCont");
-  customerCont.appendChild(masterPeopleCont)
+  allPeopleCont.classList.add("peopleCont");
+  customerCont.appendChild(allPeopleCont)
 } 
+//function that creates the filter container
+function nameFilter(customerArray){
+  let allNameFilter = document.createElement('form');
+  let formDiv = document.createElement('div');
+  let nameInput = document.createElement('label');
+  let input = document.createElement('input');
+  let search = document.createElement('button')
 
-//button to show and hide people
+  search.innerText = 'Search'
+  allNameFilter.innerText = 'Name Filter';
+  nameInput.innerText = 'Search for name';
+  input.type = 'text'
+
+allNameFilter.classList.add('filterField')
+
+  formDiv.appendChild(nameInput);
+  formDiv.appendChild(input);
+  allNameFilter.appendChild(formDiv);
+  allNameFilter.appendChild(search);
+  customerCont.appendChild(allNameFilter);
+}
+
+
+
+//buttons to hide all people
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
+  let formLook = container.querySelectorAll(".filterField");
+  for (let form of formLook){
+    container.removeChild(form) //this removes form
+  }
   for (let div of personDivs) {
     container.removeChild(div);
   }}
+
+//Button to show everyone
 showMeButton.addEventListener("click", (event) => {
   if (showMeButton.innerText === "Hide my customers!") {
     hidePeople(customerCont);
     showMeButton.innerText = "Show all my customers!";
   } else {
-    customerGrid(pplInArray);
-    // customerGrid(newCust);
+    customerGrid(newCust);
     showMeButton.innerText = "Hide my customers!";
   }
 })
+
+//button to hide form
+// function hidePeople(container) {
+//   let formLook = container.querySelectorAll(".filterField");
+//   for (let form of formLook){
+//     container.removeChild(form) //this removes form
+//   }
+//   }
+
+//button to show filter
+nameForm.addEventListener("click", (event)=> {
+  if (nameForm.innerText === "Hide name filter"){
+    hidePeople(customerCont);
+    nameForm.innerText = "Filter by name";}
+  else {
+    nameFilter(newCust);
+    nameForm.innerText = "Hide name filter";
+  }
+  })
+
