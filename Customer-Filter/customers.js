@@ -564,13 +564,13 @@ function capitalizeFirstLetter(string) {
 
 //References to the buttons displayed
 const customerCont = document.querySelector('#pplCont');
-const showMeButton = document.querySelector("#showMe")
-const nameForm = document.querySelector('#filter')
-
+const showMeButton = document.querySelector("#showMe");
+const nameForm = document.querySelector('#filter');
+const gladiatorButton = document.querySelector('#gladiator');
 // const nameFilterButton = document.querySelector('searchButton')
 
 //variable for finder function
-let pplSelect = []//'sophia', 'russell'
+let pplSelect = ['russell']//'sophia', 'russell'
 let pplInArray = [] //this is going to be the information with people in pplSelect
 
 //this function goes selects the people in the array that match pplSelect
@@ -583,8 +583,6 @@ function finder() {
     }
   }
 };
-
-// console.log(pplInArray)
 
 //Function that creates the visual for everyone 
 function customerGrid(customerArray) {
@@ -675,11 +673,78 @@ function nameFilter(customerArray) {
   customerCont.appendChild(allNameFilter);
 }
 
+//Function that creates the gladiator button
+function gladFunction(customerArray){
+  let gladiatorCont = document.createElement('div');
+  let thumbsUp = document.createElement('div');
+    let approve = document.createElement('img');
+    let approveButton = document.createElement('button');
+  let randomCustomer = document.createElement('div');
+    
+  let thumbDown = document.createElement('div');
+    let disapprove = document.createElement('img');
+    let disapproveButton = document.createElement('button');
+
+  for (let i=0;i<customerArray;i++){
+    let name = document.createElement("h2");
+    let location = document.createElement("p");
+    let email = document.createElement("p");
+    let dob = document.createElement("p");
+    let registered = document.createElement("p");
+    let picture = document.createElement("img");
+
+  let personImg = customerArray[i].picture.large
+  let custEmail = customerArray[i].email
+  let address = customerArray[i].location.street.number + ' ' + customerArray[i].location.street.name;
+  let zip = customerArray[i].location.city + ' ' + nameToAbbr(customerArray[i].location.state) + ' ' + customerArray[i].location.postcode
+  let custName = capitalizeFirstLetter(customerArray[i].name.title) + ' ' + capitalizeFirstLetter(customerArray[i].name.first) + ' ' + capitalizeFirstLetter(customerArray[i].name.last)
+  let birthday = `DOB: ${moment(customerArray[i].dob.date).format("MMM Do YY")}`;
+  let customerSince = 'Customer since: ' + moment(customerArray[i].registered.date).format("MMM Do YY")
+
+name.innerText = custName;
+  location.innerText = address + ', ' + zip;
+  email.innerText = custEmail;
+  dob.innerText = birthday;
+  registered.innerText = customerSince;
+  picture.src = personImg;
+  
+  email.classList.add("test");
+
+  randomCustomer.appendChild(picture);
+  randomCustomer.appendChild(name);
+  randomCustomer.appendChild(email);
+  randomCustomer.appendChild(location);
+  randomCustomer.appendChild(dob);
+  randomCustomer.appendChild(registered);
+  }
+
+  gladiatorCont.classList.add('theOne')
+  approveButton.innerText = 'Emperor Approves';
+  disapproveButton.innerText = 'Emperor disapproves';
+  approve.src = 'https://sadanduseless.b-cdn.net/wp-content/uploads/2020/04/thumbs-up-guns13.jpg';
+  disapprove.src = 'http://gamerbling.files.wordpress.com/2008/02/commodus.jpg';
+
+  thumbsUp.appendChild(approve);
+  thumbsUp.appendChild(approveButton);
+  thumbDown.appendChild(disapprove);
+  thumbDown.appendChild(disapproveButton);
+  gladiatorCont.appendChild(thumbsUp);
+  gladiatorCont.appendChild(randomCustomer);
+  gladiatorCont.appendChild(thumbDown);
+
+  customerCont.appendChild(gladiatorCont);
+}
+
+
 //buttons to hide selected buttons
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   let formLook = container.querySelectorAll(".filterField");
+  let removeMadness =container.querySelectorAll('.theOne')
 
+  for (let chaos of removeMadness) {
+    container.removeChild(chaos) //this removes form
+  }
   for (let form of formLook) {
     container.removeChild(form) //this removes form
   }
@@ -701,7 +766,20 @@ showMeButton.addEventListener("click", (event) => {
   }
 })
 
-//button to show filter button 
+//gladiator Button Becuase fun
+gladiatorButton.addEventListener("click", (event) => {
+  if (gladiatorButton.innerText === "End the Madness!") {
+    hidePeople(customerCont);
+    gladiatorButton.innerText = "Gladiator";
+  } else {
+    hidePeople(customerCont)//clears anything that was selected before
+    nameForm.innerText = "Filter by name";
+    gladFunction(newCust);
+    gladiatorButton.innerText = "End the Madness!";
+  }
+})
+
+//button to show filter button and contents within
 nameForm.addEventListener("click", (event) => {
   if (nameForm.innerText === "Hide name filter") {
     hidePeople(customerCont);
@@ -712,6 +790,7 @@ nameForm.addEventListener("click", (event) => {
     showMeButton.innerText = 'Show all my customers!';
     nameFilter(newCust);
     nameForm.innerText = "Hide name filter";
+    //everything below this line is involved with the checkbox filter
     //reference to the input created for each person in the function nameFilter
     const sophia = document.querySelector('#sophia');
     const krin = document.querySelector('#krin');
