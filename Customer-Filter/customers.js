@@ -585,11 +585,6 @@ function randomP(array){
   console.log(random[randomNumber])
   chosenPerson.push(random[randomNumber]);
 }
-//
-// randomP(newCust);
-// finder(chosenPerson);
-// customerGrid(pplInArray);
-// console.log(randomP(newCust));
 
 //this function goes selects the people in the array that match pplSelect
 function finder(array) {
@@ -740,7 +735,9 @@ thumbsUp.classList.add('up');
 thumbDown.classList.add('down');
   gladiatorCont.classList.add('theOne');
   approveButton.innerText = 'Emperor Approves';
+  approveButton.setAttribute('onclick',"window.location='https://www.youtube.com/watch?v=SC4xMk98Pdc'")
   disapproveButton.innerText = 'Emperor disapproves';
+  disapproveButton.setAttribute('onclick',"window.location='https://www.youtube.com/watch?v=e7duekNFIjc'");
   approve.src = 'https://sadanduseless.b-cdn.net/wp-content/uploads/2020/04/thumbs-up-guns13.jpg';
   disapprove.src = 'http://gamerbling.files.wordpress.com/2008/02/commodus.jpg';
 
@@ -787,7 +784,7 @@ showMeButton.addEventListener("click", (event) => {
   }
 })
 
-//gladiator Button Becuase fun
+//gladiator Button becuase fun
 gladiatorButton.addEventListener("click", (event) => {
   if (gladiatorButton.innerText === "End the Madness!") {
     hidePeople(customerCont);
@@ -802,6 +799,10 @@ gladiatorButton.addEventListener("click", (event) => {
     pplInArray = [];
     chosenPerson = [];
     gladiatorButton.innerText = "End the Madness!";
+
+    //need hide buttons 
+    //need button for emperor approves 
+    //need button for emperor disapproves
   }
 })
 
