@@ -672,7 +672,7 @@ function nameFilter(customerArray) {
     let input = document.createElement('input');
     let nameInput = document.createElement('label');
 
-    nameInput.innerText = `${customerArray[i].name.first}`;
+    nameInput.innerText = `${capitalizeFirstLetter(customerArray[i].name.first)}`;
     input.value = customerArray[i].name.first
     input.type = 'checkbox';
     input.setAttribute('id', customerArray[i].name.first)
