@@ -570,7 +570,7 @@ const gladiatorButton = document.querySelector('#gladiator');
 // const nameFilterButton = document.querySelector('searchButton')
 
 //variable for finder function
-let pplSelect = ['russell']//'sophia', 'russell'
+let pplSelect = []//'sophia', 'russell'
 let pplInArray = [] //this is going to be the information with people in pplSelect
 
 //this function goes selects the people in the array that match pplSelect
@@ -735,7 +735,6 @@ name.innerText = custName;
   customerCont.appendChild(gladiatorCont);
 }
 
-
 //buttons to hide selected buttons
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
@@ -761,6 +760,7 @@ showMeButton.addEventListener("click", (event) => {
   } else {
     hidePeople(customerCont)//clears anything that was selected before
     nameForm.innerText = "Filter by name";
+    gladiatorButton.innerText = 'Gladiator';
     customerGrid(newCust);
     showMeButton.innerText = "Hide my customers!";
   }
@@ -774,6 +774,7 @@ gladiatorButton.addEventListener("click", (event) => {
   } else {
     hidePeople(customerCont)//clears anything that was selected before
     nameForm.innerText = "Filter by name";
+    showMeButton.innerText= 'Show all my customers!';
     gladFunction(newCust);
     gladiatorButton.innerText = "End the Madness!";
   }
@@ -788,6 +789,7 @@ nameForm.addEventListener("click", (event) => {
   else {
     hidePeople(customerCont)//clears anything that was selected before
     showMeButton.innerText = 'Show all my customers!';
+    gladiatorButton.innerText = 'Gladiator';
     nameFilter(newCust);
     nameForm.innerText = "Hide name filter";
     //everything below this line is involved with the checkbox filter
