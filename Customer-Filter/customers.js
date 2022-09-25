@@ -735,7 +735,7 @@ thumbsUp.classList.add('up');
 thumbDown.classList.add('down');
   gladiatorCont.classList.add('theOne');
   approveButton.innerText = 'Emperor Approves';
-  approveButton.setAttribute('onclick',"window.location='https://www.youtube.com/watch?v=SC4xMk98Pdc'")
+  approveButton.setAttribute('onclick',"window.location='https://www.youtube.com/watch?v=LOR8OYXWCGk'")
   disapproveButton.innerText = 'Emperor disapproves';
   disapproveButton.setAttribute('onclick',"window.location='https://www.youtube.com/watch?v=e7duekNFIjc'");
   approve.src = 'https://sadanduseless.b-cdn.net/wp-content/uploads/2020/04/thumbs-up-guns13.jpg';
