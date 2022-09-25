@@ -56,3 +56,19 @@ h2{
     font-size: 20px;
     margin-bottom: 5px;
 }
+.theOne{
+    display:flex;
+    flex-flow: row;
+    justify-content:space-around;
+    align-items: center;
+}
+.up{
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.down{
+    display:flex;
+    flex-flow: column wrap;
+    align-items:center;
+}

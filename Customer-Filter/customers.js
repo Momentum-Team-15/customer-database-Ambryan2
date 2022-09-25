@@ -570,14 +570,15 @@ const gladiatorButton = document.querySelector('#gladiator');
 // const nameFilterButton = document.querySelector('searchButton')
 
 //variable for finder function
-let pplSelect = []//'sophia', 'russell'
+let pplSelect = []
 let pplInArray = [] //this is going to be the information with people in pplSelect
 
+
 //this function goes selects the people in the array that match pplSelect
-function finder() {
-  for (let j = 0; j < pplSelect.length; j++) {
+function finder(array) {
+  for (let j = 0; j < array.length; j++) {
     for (let i = 0; i < newCust.length; i++) {
-      if (newCust[i].name.first === pplSelect[j]) {
+      if (newCust[i].name.first === array[j]) {
         pplInArray.push(newCust[i])//this all the info of peoples names selected
       }
     }
@@ -717,8 +718,9 @@ name.innerText = custName;
   randomCustomer.appendChild(dob);
   randomCustomer.appendChild(registered);
   }
-
-  gladiatorCont.classList.add('theOne')
+thumbsUp.classList.add('up');
+thumbDown.classList.add('down');
+  gladiatorCont.classList.add('theOne');
   approveButton.innerText = 'Emperor Approves';
   disapproveButton.innerText = 'Emperor disapproves';
   approve.src = 'https://sadanduseless.b-cdn.net/wp-content/uploads/2020/04/thumbs-up-guns13.jpg';
