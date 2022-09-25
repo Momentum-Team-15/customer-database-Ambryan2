@@ -579,9 +579,7 @@ function finder() {
     for (let i = 0; i < newCust.length; i++) {
       if (newCust[i].name.first === pplSelect[j]) {
         pplInArray.push(newCust[i])//this all the info of peoples names selected
-        console.log('found them')
       }
-      else { console.log('no find them') }
     }
   }
 };
@@ -658,7 +656,7 @@ function nameFilter(customerArray) {
 
   search.setAttribute('id', 'searchButton')
   allNameFilter.classList.add('filterField')
-
+  search.type ='submit';
   for (let i = 0; i < customerArray.length; i++) {
     let input = document.createElement('input');
     let nameInput = document.createElement('label');
@@ -681,6 +679,7 @@ function nameFilter(customerArray) {
 function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   let formLook = container.querySelectorAll(".filterField");
+
   for (let form of formLook) {
     container.removeChild(form) //this removes form
   }
@@ -701,9 +700,6 @@ showMeButton.addEventListener("click", (event) => {
     showMeButton.innerText = "Hide my customers!";
   }
 })
-
-// const nameFilterButton = document.querySelector('#accept')
-// const searchPplButton = document.querySelector('searchButton')
 
 //button to show filter button 
 nameForm.addEventListener("click", (event) => {
@@ -729,132 +725,188 @@ nameForm.addEventListener("click", (event) => {
     const clifford = document.querySelector('#clifford');
     const cody = document.querySelector('#cody');
     const miguel = document.querySelector('#miguel');
-//these make the chekbox responsive
+    //these make the chekbox responsive
     sophia.addEventListener("click", (event) => {
-      if (sophia.checked) {
+      console.log(sophia.checked)
+      if (sophia.checked === true) {
         if (sophia.value === 'sophia') {
           pplSelect.push(sophia.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(sophia.value)
+        console.log(pplSelect);
+      }
+    
     })
-
     krin.addEventListener("click", (event) => {
-      if (krin.checked) {
+      if (krin.checked === true) {
         if (krin.value === 'krin') {
           pplSelect.push(krin.value)
           console.log(pplSelect)
         }
       }
+    else {
+      pplSelect.shift(krin.value)
+      console.log(pplSelect);
+    }
     })
     letitia.addEventListener("click", (event) => {
-      if (letitia.checked) {
+      if (letitia.checked === true) {
         if (letitia.value === 'letitia') {
           pplSelect.push(letitia.value)
           console.log(pplSelect)
         }
       }
+    else {
+      pplSelect.shift(letitia.value)
+      console.log(pplSelect);
+    }
     })
-
     margie.addEventListener("click", (event) => {
-      if (margie.checked) {
+      if (margie.checked === true) {
         if (margie.value === 'margie') {
           pplSelect.push(margie.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(margie.value)
+        console.log(pplSelect);
+      }
     })
-
     cristina.addEventListener("click", (event) => {
-      if (cristina.checked) {
+      if (cristina.checked === true) {
         if (cristina.value === 'cristina') {
           pplSelect.push(cristina.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(cristina.value)
+        console.log(pplSelect);
+      }
     })
-
     laurie.addEventListener("click", (event) => {
-      if (laurie.checked) {
+      if (laurie.checked === true) {
         if (laurie.value === 'laurie') {
           pplSelect.push(laurie.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(laurie.value)
+        console.log(pplSelect);
+      }
     })
     russell.addEventListener("click", (event) => {
-      if (russell.checked) {
+      if (russell.checked === true) {
         if (russell.value === 'russell') {
           pplSelect.push(russell.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(russell.value)
+        console.log(pplSelect);
+      }
     })
-
     carmen.addEventListener("click", (event) => {
-      if (carmen.checked) {
+      if (carmen.checked === true) {
         if (carmen.value === 'carmen') {
           pplSelect.push(carmen.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(carmen.value)
+        console.log(pplSelect);
+      }
     })
-
     erika.addEventListener("click", (event) => {
-      if (erika.checked) {
+      if (erika.checked === true) {
         if (erika.value === 'erika') {
           pplSelect.push(erika.value)
           console.log(pplSelect)
         }
       }
+      else {
+        pplSelect.shift(erika.value)
+        console.log(pplSelect);
+      }
     })
-
     clifford.addEventListener("click", (event) => {
-      if (clifford.checked) {
+      if (clifford.checked ===true) {
         if (clifford.value === 'clifford') {
           pplSelect.push(clifford.value)
           console.log(pplSelect);
         }
       }
+      else {
+        pplSelect.shift(clifford.value)
+        console.log(pplSelect);
+      }
     })
     cody.addEventListener("click", (event) => {
-      if (cody.checked) {
+      if (cody.checked === true) {
         if (cody.value === 'cody') {
           pplSelect.push(cody.value)
           console.log(pplSelect);
         }
       }
+      else {
+        pplSelect.shift(cody.value)
+        console.log(pplSelect);
+      }
     })
-
     miguel.addEventListener("click", (event) => {
-      if (miguel.checked) {
+      if (miguel.checked === true) {
         if (miguel.value === 'miguel') {
           pplSelect.push(miguel.value)
           console.log(pplSelect);
         }
       }
-   
-   
+      else {
+        pplSelect.shift(miguel.value)
+        console.log(pplSelect);
+      }
     })
 
 
-    // switch (nameFormDisplay.value)
-    // {
-    //   case "sophia":pplSelect.push(nameFormDisplay.value); console.log(pplSelect);break;
-    //   case "krin":pplSelect.push(nameFormDisplay.value);console.log(pplSelect); break;
-    //   case "letitia":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "margie":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "cristina":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "laurie":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "russell":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "carmen":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "erika":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "clifford":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "cody":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    //   case "miguel":pplSelect.push(nameFormDisplay.value);console.log(pplSelect);break;
-    // }
+    //filtering ppl selected
+    const searchB = document.querySelector('#searchButton');
+
+
+    function hideSearch(container) {
+      let formLook = container.querySelectorAll(".peopleCont");
+    
+      for (let form of formLook) {
+        container.removeChild(form) //this removes form
+      }
+    }
+
+    searchB.addEventListener("click", (event) => { 
+      event.preventDefault();
+      if (searchB.innerText === "Clear") {
+        hideSearch(customerCont);
+        searchB.innerText = "Search";
+        pplInArray = []
+      } else {
+      searchB.innerText = "Clear";  
+      finder(pplSelect);
+      customerGrid(pplInArray);
+      
+      pplSelect = [];
+      }
+    })
   }
+
 })
+
+
+
+
 
 
 
