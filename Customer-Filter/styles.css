@@ -64,11 +64,16 @@ h2{
 }
 .up{
     display:flex;
-    flex-flow: column wrap;
+    flex-flow:column wrap;
     align-items: center;
+    justify-content: space-around;
+    height: 400px;
+    width: 400px;
 }
 .down{
     display:flex;
     flex-flow: column wrap;
+    justify-content: space-around;
     align-items:center;
+    height: 400px;
 }
