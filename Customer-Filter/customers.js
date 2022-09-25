@@ -656,7 +656,7 @@ function nameFilter(customerArray) {
 
   search.setAttribute('id', 'searchButton')
   allNameFilter.classList.add('filterField')
-  search.type ='submit';
+  search.type = 'submit';
   for (let i = 0; i < customerArray.length; i++) {
     let input = document.createElement('input');
     let nameInput = document.createElement('label');
@@ -735,10 +735,12 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(sophia.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('sophia');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
-    
+
     })
     krin.addEventListener("click", (event) => {
       if (krin.checked === true) {
@@ -747,10 +749,12 @@ nameForm.addEventListener("click", (event) => {
           console.log(pplSelect)
         }
       }
-    else {
-      pplSelect.shift(krin.value)
-      console.log(pplSelect);
-    }
+      else {
+        const index = pplSelect.indexOf('krin');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }
     })
     letitia.addEventListener("click", (event) => {
       if (letitia.checked === true) {
@@ -759,10 +763,12 @@ nameForm.addEventListener("click", (event) => {
           console.log(pplSelect)
         }
       }
-    else {
-      pplSelect.shift(letitia.value)
-      console.log(pplSelect);
-    }
+      else {
+        const index = pplSelect.indexOf('letitia');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }
     })
     margie.addEventListener("click", (event) => {
       if (margie.checked === true) {
@@ -772,8 +778,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(margie.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('margie');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     cristina.addEventListener("click", (event) => {
@@ -784,8 +792,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(cristina.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('cristina');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     laurie.addEventListener("click", (event) => {
@@ -796,8 +806,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(laurie.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('laurie');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     russell.addEventListener("click", (event) => {
@@ -808,8 +820,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(russell.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('russell');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     carmen.addEventListener("click", (event) => {
@@ -820,8 +834,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(carmen.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('carmen');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     erika.addEventListener("click", (event) => {
@@ -832,20 +848,24 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(erika.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('erika');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     clifford.addEventListener("click", (event) => {
-      if (clifford.checked ===true) {
+      if (clifford.checked === true) {
         if (clifford.value === 'clifford') {
           pplSelect.push(clifford.value)
           console.log(pplSelect);
         }
       }
       else {
-        pplSelect.shift(clifford.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('clifford');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     cody.addEventListener("click", (event) => {
@@ -856,8 +876,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(cody.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('cody');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
     miguel.addEventListener("click", (event) => {
@@ -868,8 +890,10 @@ nameForm.addEventListener("click", (event) => {
         }
       }
       else {
-        pplSelect.shift(miguel.value)
-        console.log(pplSelect);
+        const index = pplSelect.indexOf('miguel');
+        if (index > -1) { // only splice array when item is found
+          pplSelect.splice(index, 1); // 2nd parameter means remove one item only
+        }
       }
     })
 
@@ -880,24 +904,31 @@ nameForm.addEventListener("click", (event) => {
 
     function hideSearch(container) {
       let formLook = container.querySelectorAll(".peopleCont");
-    
+
       for (let form of formLook) {
         container.removeChild(form) //this removes form
       }
     }
 
-    searchB.addEventListener("click", (event) => { 
+    searchB.addEventListener("click", (event) => {
       event.preventDefault();
       if (searchB.innerText === "Clear") {
         hideSearch(customerCont);
         searchB.innerText = "Search";
-        pplInArray = []
+
       } else {
-      searchB.innerText = "Clear";  
-      finder(pplSelect);
-      customerGrid(pplInArray);
-      
-      pplSelect = [];
+        searchB.innerText = "Clear";
+        function removeDuplicates(arr) {
+          return arr.filter((item,
+            index) => arr.indexOf(item) === index);
+        }
+        let temp = removeDuplicates(pplSelect).slice();
+        console.log(temp);
+        pplSelect = temp.slice();
+        console.log(pplSelect)
+        finder(pplSelect);
+        customerGrid(pplInArray);
+        pplInArray = []
       }
     })
   }
