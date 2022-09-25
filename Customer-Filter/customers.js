@@ -570,9 +570,26 @@ const gladiatorButton = document.querySelector('#gladiator');
 // const nameFilterButton = document.querySelector('searchButton')
 
 //variable for finder function
-let pplSelect = []
+let pplSelect = [] //this is used for filter
+let chosenPerson = []//random person selected will be here
 let pplInArray = [] //this is going to be the information with people in pplSelect
 
+//a function that selects a random person in the array
+function randomP(array){
+  let random = []
+  for (let i = 0; i<array.length; i++){
+      random.push(newCust[i].name.first);
+      // Math.floor(Math.random * random.length) 
+  }
+  let randomNumber = Math.floor(Math.random() * random.length);
+  console.log(random[randomNumber])
+  chosenPerson.push(random[randomNumber]);
+}
+//
+// randomP(newCust);
+// finder(chosenPerson);
+// customerGrid(pplInArray);
+// console.log(randomP(newCust));
 
 //this function goes selects the people in the array that match pplSelect
 function finder(array) {
@@ -676,6 +693,7 @@ function nameFilter(customerArray) {
 
 //Function that creates the gladiator button
 function gladFunction(customerArray){
+  
   let gladiatorCont = document.createElement('div');
   let thumbsUp = document.createElement('div');
     let approve = document.createElement('img');
@@ -686,7 +704,7 @@ function gladFunction(customerArray){
     let disapprove = document.createElement('img');
     let disapproveButton = document.createElement('button');
 
-  for (let i=0;i<customerArray;i++){
+  for (let i=0;i<customerArray.length;i++){
     let name = document.createElement("h2");
     let location = document.createElement("p");
     let email = document.createElement("p");
@@ -710,7 +728,6 @@ name.innerText = custName;
   picture.src = personImg;
   
   email.classList.add("test");
-
   randomCustomer.appendChild(picture);
   randomCustomer.appendChild(name);
   randomCustomer.appendChild(email);
@@ -718,6 +735,7 @@ name.innerText = custName;
   randomCustomer.appendChild(dob);
   randomCustomer.appendChild(registered);
   }
+  randomCustomer.classList.add('box');
 thumbsUp.classList.add('up');
 thumbDown.classList.add('down');
   gladiatorCont.classList.add('theOne');
@@ -734,6 +752,7 @@ thumbDown.classList.add('down');
   gladiatorCont.appendChild(randomCustomer);
   gladiatorCont.appendChild(thumbDown);
 
+  // customerCont.remove(randomCustomer);
   customerCont.appendChild(gladiatorCont);
 }
 
@@ -742,7 +761,7 @@ function hidePeople(container) {
   let personDivs = container.querySelectorAll(".peopleCont");
   let formLook = container.querySelectorAll(".filterField");
   let removeMadness =container.querySelectorAll('.theOne')
-
+ 
   for (let chaos of removeMadness) {
     container.removeChild(chaos) //this removes form
   }
@@ -777,7 +796,11 @@ gladiatorButton.addEventListener("click", (event) => {
     hidePeople(customerCont)//clears anything that was selected before
     nameForm.innerText = "Filter by name";
     showMeButton.innerText= 'Show all my customers!';
-    gladFunction(newCust);
+    randomP(newCust);
+    finder(chosenPerson);
+    gladFunction(pplInArray);
+    pplInArray = [];
+    chosenPerson = [];
     gladiatorButton.innerText = "End the Madness!";
   }
 })
